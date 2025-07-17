@@ -1,6 +1,9 @@
+"use client";
 import Image from "next/image";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const diagrams = [
   {
@@ -48,6 +51,7 @@ const diagrams = [
 ];
 
 export default function Home() {
+  const router = useRouter();
   return (
     <div className="min-h-screen bg-[#18181b] text-white font-sans relative overflow-x-hidden">
       {/* Dotted grid background */}
@@ -55,32 +59,39 @@ export default function Home() {
       {/* Navbar */}
       <nav className="relative z-10 flex items-center justify-between px-8 py-6">
         <div className="flex items-center gap-3">
-          <div className="bg-[#23232a] rounded-xl w-10 h-10 flex items-center justify-center font-bold text-lg">CW</div>
+          <div className="bg-[#23232a] rounded-xl w-10 h-10 flex items-center justify-center font-bold text-lg">CS</div>
           <span className="text-2xl font-extrabold tracking-tight">ClauseWise</span>
         </div>
         <div className="flex gap-8 items-center text-lg font-medium">
           <a href="#" className="text-white border-b-2 border-white pb-1">Home</a>
-          <a href="#" className="text-gray-400 hover:text-white transition">Dashboard</a>
+          <Link href="/dashboard" className="text-gray-400 hover:text-white transition">Dashboard</Link>
           <a href="#" className="text-gray-400 hover:text-white transition">Editor</a>
-          <a href="#" className="text-gray-400 hover:text-white transition">Pricing</a>
+          <Link href="/pricing" className="text-gray-400 hover:text-white transition">
+            Pricing
+          </Link>
         </div>
         <div className="flex gap-3 items-center">
-          <button className="text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#23232a] transition">Sign in</button>
+          <button
+            className="text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#23232a] transition"
+            onClick={() => router.push("/signup")}
+          >
+            Sign in
+          </button>
           <Button className="bg-white text-black font-semibold px-5 py-2 rounded-lg shadow hover:bg-gray-200">Get Started</Button>
         </div>
       </nav>
       {/* Main content */}
       <main className="relative z-10 flex flex-col items-center justify-center pt-24 pb-16 px-4">
         <div className="flex items-center gap-3 mb-6">
-          <div className="bg-[#23232a] rounded-xl w-12 h-12 flex items-center justify-center font-bold text-xl">CW</div>
+          <div className="bg-[#23232a] rounded-xl w-12 h-12 flex items-center justify-center font-bold text-xl">CS</div>
           <span className="text-3xl font-extrabold tracking-tight">ClauseWise</span>
         </div>
         <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-center leading-tight mb-4">
-        ⚖️ Get Legal Advice.<br />
+         ⚖️ Get Legal Advice.<br />
           <span className="bg-gradient-to-r from-[#a259ff] via-[#6a82fb] to-[#005bea] bg-clip-text text-transparent">Instantly.</span>
         </h1>
         <p className="text-xl text-gray-300 text-center mb-10 max-w-2xl">
-        Clear. Confidential. Reliable.</p>
+         Clear. Confidential. Reliable.</p>
         <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
           <Button className="bg-white text-black font-semibold px-7 py-3 text-lg rounded-lg shadow hover:bg-gray-200 flex items-center gap-2">
             Generate Architecture <span className="text-xl">→</span>
